@@ -29,7 +29,7 @@ void reverse(uint32_t* l);
 void reverse(uint64_t* ll);
 
 // Convert a host order byte array to network order.
-void htonb(uint8_t* hbytes, size_t len);
+void htonb(uint8_t* bytes, size_t len);
 
 // Return a host order short in network order.
 uint16_t htons(uint16_t hs);
@@ -40,8 +40,17 @@ uint32_t htonl(uint32_t hl);
 // Return a host order long long in network order.
 uint64_t htonll(uint64_t hll);
 
+// Write a host order short to a byte array in network order.
+void hstonb(uint8_t* nb, uint16_t hs);
+
+// Write a host order long to a byte array in network order.
+void hltonb(uint8_t* nb, uint32_t hl);
+
+// Write a host order long long to a byte array in network order.
+void hlltonb(uint8_t* nb, uint64_t hll);
+
 // Convert a network order byte array to host order.
-void ntohb(uint8_t* nbytes, size_t len);
+void ntohb(uint8_t* bytes, size_t len);
 
 // Return a network order short in host order.
 uint16_t ntohs(uint16_t ns);
@@ -77,7 +86,7 @@ void hstob(uint8_t* bytes, uint16_t hs, Endianness order);
 void hltob(uint8_t* bytes, uint32_t hl, Endianness order);
 
 // Write a host order long long to a byte array in the given order.
-void hlltob(uint8_t* bytes, uint32_t hll, Endianness order);
+void hlltob(uint8_t* bytes, uint64_t hll, Endianness order);
 
 }  // namespace Endian
 

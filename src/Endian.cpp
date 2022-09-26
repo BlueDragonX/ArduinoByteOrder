@@ -43,9 +43,9 @@ void reverse(uint64_t* ll) {
     reverse((uint8_t*)ll, 8);
 }
 
-void htonb(uint8_t* hbytes, size_t len) {
+void htonb(uint8_t* bytes, size_t len) {
     if (host() == LITTLE) {
-        reverse(hbytes, len);
+        reverse(bytes, len);
     }
 }
 
@@ -84,8 +84,8 @@ uint64_t htonll(uint64_t hll) {
         ((hll & 0x00000000000000FF) << 56));
 }
 
-void ntohb(uint8_t* nbytes, size_t len) {
-    htonb(nbytes, len);
+void ntohb(uint8_t* bytes, size_t len) {
+    htonb(bytes, len);
 }
 
 uint16_t ntohs(uint16_t ns) {
@@ -98,6 +98,18 @@ uint32_t ntohl(uint32_t nl) {
 
 uint64_t ntohll(uint64_t nll) {
     return htonll(nll);
+}
+
+void hstonb(uint8_t* nb, uint16_t hs) {
+    hstob(nb, hs, BIG);
+}
+
+void hltonb(uint8_t* nb, uint32_t hl) {
+    hltob(nb, hl, BIG);
+}
+
+void hlltonb(uint8_t* nb, uint64_t hll) {
+    hlltob(nb, hll, BIG);
 }
 
 uint16_t nbtohs(const uint8_t* nb) {
@@ -158,7 +170,7 @@ void hltob(uint8_t* bytes, uint32_t hl, Endianness order) {
     }
 }
 
-void hlltob(uint8_t* bytes, uint32_t hll, Endianness order) {
+void hlltob(uint8_t* bytes, uint64_t hll, Endianness order) {
     if (host() == order) {
         memcpy(bytes, (uint8_t*)&hll, 8);
     } else {

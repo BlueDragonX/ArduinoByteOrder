@@ -137,6 +137,30 @@ test(HtoNTest, LongLong) {
     assertHexEqual(htonll(value), expect);
 }
 
+test(HtoNTest, ShortToBytes) {
+    uint16_t value = 0x1122;
+    uint8_t expect[] = {0x11, 0x22};
+    uint8_t actual[2];
+    hstonb(actual, value);
+    assertBytesEqual(actual, expect, 2);
+}
+
+test(HtoNTest, LongToBytes) {
+    uint32_t value = 0x11223344;
+    uint8_t expect[] = {0x11, 0x22, 0x33, 0x44};
+    uint8_t actual[4];
+    hltonb(actual, value);
+    assertBytesEqual(actual, expect, 4);
+}
+
+test(HtoNTest, LongLongToBytes) {
+    uint64_t value = 0x1122334455667788;
+    uint8_t expect[] = {0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88};
+    uint8_t actual[8];
+    hlltonb(actual, value);
+    assertBytesEqual(actual, expect, 8);
+}
+
 test(NtoHTest, Bytes) {
     uint8_t actual[] = {0x11, 0x22, 0x33, 0x44};
     uint8_t expect[] = {0x11, 0x22, 0x33, 0x44};
