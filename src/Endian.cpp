@@ -113,15 +113,15 @@ void hlltonb(uint8_t* nb, uint64_t hll) {
 }
 
 uint16_t nbtohs(const uint8_t* nb) {
-    return btohs(nb, LITTLE);
+    return btohs(nb, BIG);
 }
 
 uint32_t nbtohl(const uint8_t* nb) {
-    return btohl(nb, LITTLE);
+    return btohl(nb, BIG);
 }
 
 uint64_t nbtohll(const uint8_t* nb) {
-    return btohll(nb, LITTLE);
+    return btohll(nb, BIG);
 }
 
 uint16_t btohs(const uint8_t* bytes, Endianness order) {

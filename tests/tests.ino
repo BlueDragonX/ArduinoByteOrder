@@ -185,25 +185,25 @@ test(NtoHTest, Long) {
 
 test(NtoHTest, LongLong) {
     uint64_t value = 0x1122334455667788;
-    uint64_t expect = host() == BIG ? 0x1122334455667788: 0x8877665544332211;
+    uint64_t expect = 0x8877665544332211;
     assertHexEqual(ntohll(value), expect);
 }
 
 test(NBtoH, Short) {
     uint8_t bytes[] = {0x11, 0x22};
-    uint16_t expect = host() == BIG ? 0x1122 : 0x2211;
+    uint16_t expect = 0x1122;
     assertHexEqual(nbtohs(bytes), expect);
 }
 
 test(NBtoH, Long) {
     uint8_t bytes[] = {0x11, 0x22, 0x33, 0x44};
-    uint32_t expect = host() == BIG ? 0x11223344 : 0x44332211;
+    uint32_t expect = 0x11223344;
     assertHexEqual(nbtohl(bytes), expect);
 }
 
 test(NBtoH, LongLong) {
     uint8_t bytes[] = {0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88};
-    uint64_t expect = host() == BIG ? 0x1122334455667788 : 0x8877665544332211;
+    uint64_t expect = 0x1122334455667788;
     assertHexEqual(nbtohll(bytes), expect);
 }
 
@@ -241,6 +241,14 @@ test(BtoHTest, LongLongLittle) {
     uint8_t bytes[] = {0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11};
     uint64_t expect = 0x1122334455667788;
     assertHexEqual(btohll(bytes, LITTLE), expect);
+}
+
+test(BtoHTest, RoundTrip) {
+    uint8_t b[4];
+    uint32_t expect = 91100000;
+    Endian::hltonb(b, expect);
+    Serial.print("written: ");printBytes(b, 4);Serial.println();
+    assertHexEqual(Endian::nbtohl(b), expect);
 }
 
 }  // namespace Endian
