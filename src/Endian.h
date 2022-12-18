@@ -1,6 +1,9 @@
 #ifndef _ENDIAN_H_
 #define _ENDIAN_H_
 
+// Disable lwIP macros in the event lwIP is installed.
+#define LWIP_DONT_PROVIDE_BYTEORDER_FUNCTIONS
+
 #include <Arduino.h>
 
 namespace Endian {
