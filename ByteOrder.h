@@ -1,12 +1,12 @@
-#ifndef _ENDIAN_H_
-#define _ENDIAN_H_
+#ifndef _BYTE_ORDER_H_
+#define _BYTE_ORDER_H_
 
 // Disable lwIP macros in the event lwIP is installed.
 #define LWIP_DONT_PROVIDE_BYTEORDER_FUNCTIONS
 
 #include <Arduino.h>
 
-namespace Endian {
+namespace ByteOrder {
 
 enum Endianness {
     BIG = 0,
@@ -91,6 +91,6 @@ void hltob(uint8_t* bytes, uint32_t hl, Endianness order);
 // Write a host order long long to a byte array in the given order.
 void hlltob(uint8_t* bytes, uint64_t hll, Endianness order);
 
-}  // namespace Endian
+}  // namespace ByteOrder
 
-#endif // _ENDIAN_H_
+#endif // _BYTE_ORDER_H_

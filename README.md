@@ -1,2 +1,2 @@
-# Endian
-An Arduino library for managing byte order.
+# ByteOrder
+An Arduino library for detecting endianess and managing byte order.

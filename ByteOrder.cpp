@@ -1,8 +1,8 @@
-#include "Endian.h"
+#include "ByteOrder.h"
 
 #include <Arduino.h>
 
-namespace Endian {
+namespace ByteOrder {
 
 Endianness host() {
     union {
@@ -178,4 +178,4 @@ void hlltob(uint8_t* bytes, uint64_t hll, Endianness order) {
     }
 }
 
-}  // namespace Endian
+}  // namespace ByteOrder

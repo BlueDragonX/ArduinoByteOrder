@@ -1,9 +1,9 @@
 #include <AUnit.h>
 #include <Arduino.h>
-#include <Endian.h>
+#include <ByteOrder.h>
 
+namespace ByteOrder {
 
-namespace Endian {
 size_t printBytes(uint8_t* bytes, size_t len) {
     size_t n = 0;
     for(size_t i = 0; i < len; ++i) {
@@ -246,12 +246,12 @@ test(BtoHTest, LongLongLittle) {
 test(BtoHTest, RoundTrip) {
     uint8_t b[4];
     uint32_t expect = 91100000;
-    Endian::hltonb(b, expect);
+    ByteOrder::hltonb(b, expect);
     Serial.print("written: ");printBytes(b, 4);Serial.println();
-    assertHexEqual(Endian::nbtohl(b), expect);
+    assertHexEqual(ByteOrder::nbtohl(b), expect);
 }
 
-}  // namespace Endian
+}  // namespace ByteOrder
 
 // Test boilerplate.
 void setup() {
